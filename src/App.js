@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import Reactlogo from "./logo.svg";
+import "./App.css";
+import myLogo from "./assets/Group 1.png";
+import { DATA } from "./data";
 
 function App() {
+
+
+  const handleOnCLick = (url) => {
+    window.open(url, '_blank')
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+      <div className="App-section">
+        <img src={myLogo} alt="logo" />
+        <h4 className="text-name">Akhmal Novanda</h4>
+        <p className="text-mo">
+          “Every Day is an Opportunity to Learn and Grow”
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="box">
+          {DATA.map((item, idx) => {
+            return (
+              <>
+                <div className="button-content" key={idx} onClick={()=>handleOnCLick(item.url)}>
+                  <div className="image">
+                    <img src={item.logo} alt={item.label} />
+                  </div>
+                  <div className="text">
+                    <p>{item.text}</p>
+                  </div>
+                </div>
+              </>
+            );
+          })}
+        </div>
+        <div className="footer">
+        <p>Tech Stack : </p>
+        <img src={Reactlogo} className="App-logo" alt="logo" />
+        </div>
+        
+      </div>
     </div>
   );
 }
